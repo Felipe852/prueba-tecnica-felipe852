@@ -5,7 +5,11 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        primary: "#272b33",
+      }
+    },
   },
   plugins: [require('flowbite/plugin')],
 }
