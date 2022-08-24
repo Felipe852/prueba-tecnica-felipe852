@@ -2,9 +2,16 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>
-        <h1>este es el home</h1>
-    </div>
+    <>
+      {/* Formulario */}
+      <div>
+        Formulamesta
+      </div>
+      {/* Tabla */}
+      <div>
+        tableamesta
+      </div>
+    </>
   )
 }
 

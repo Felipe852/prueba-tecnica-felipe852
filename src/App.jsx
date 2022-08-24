@@ -5,7 +5,7 @@ import AppRoutes from "./Routers/AppRoutes"
 function App() {
 
   return (
-    <div className='container m-0'>
+    <div className='container m-0 '>
       <NavBarIcon />
       <AppRoutes />
     </div>
