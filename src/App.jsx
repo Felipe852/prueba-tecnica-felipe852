@@ -6,7 +6,6 @@ function App() {
 
   return (
     <div className='container m-0 '>
-      <NavBarIcon />
       <AppRoutes />
     </div>
   )

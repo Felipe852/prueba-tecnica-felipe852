@@ -3,6 +3,7 @@ import Button from '../components/Button'
 import { useForm } from '../Hooks/useForm';
 import { useDispatch } from "react-redux";
 import { registerWithEmail } from '../Redux/actions/userActions';
+import NavBarIcon from '../components/NavBarIcon';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ const Register = () => {
   };
 
   return (
+    <>
+      <NavBarIcon />
+      
     <div className='container relative flex flex-col items-center mt-24 h-screen max-w-4xl mx-auto'>
         <h1 className='text-xl md:text-3xl'>Register</h1>
         <form
@@ -69,6 +73,7 @@ const Register = () => {
         </div>
       </form>
     </div>
+    </>
   )
 }
 

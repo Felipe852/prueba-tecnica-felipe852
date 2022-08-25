@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import Button from '../components/Button'
 import { useForm } from '../Hooks/useForm';
-import { loginGoogle, LoginWithEmail } from '../Redux/actions/userActions';
+import { loginFacebook, loginGoogle, LoginWithEmail } from '../Redux/actions/userActions';
 import { useDispatch } from 'react-redux';
+import NavBarIcon from '../components/NavBarIcon';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,13 @@ const Login = () => {
     dispatch(loginGoogle());
   };
 
+  const handleFacebook = () => {
+    dispatch(loginFacebook());
+  };
+
   return (
+    <>
+      <NavBarIcon />
     <div className='container relative flex flex-col items-center mt-24 h-screen max-w-4xl mx-auto'>
       <h1 className='text-xl md:text-3xl'>Login</h1>
       <form
@@ -71,6 +78,7 @@ const Login = () => {
               src="https://res.cloudinary.com/dnont3pur/image/upload/v1661306704/Prueba%20Tecnica%20Geek/facebook_jws7oo.png"
               alt="facebook icon"
               className="ml-2 cursor-pointer w-8 hover:w-10 transition-all duration-500"
+              onClick={handleFacebook}
             />
           </div>
         </div>
@@ -88,6 +96,7 @@ const Login = () => {
         </p>
       </div>
     </div>
+    </>
   )
 }
 
