@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from '../components/Button';
 import NavBarIcon from '../components/NavBarIcon'
 import { useForm } from '../Hooks/useForm';
 import { useSelector } from "react-redux";
+import { Context } from '../context/ContextProvider';
 
 const Home = () => {
-  const types = localStorage.getItem("type")
+  const { setImg,setName } = useContext(Context);
   const { photoURL, displayName, email , uid } = useSelector((state) => state.login);
   const { formValue, handleInputChangeName, reset } = useForm({
     name: "",
@@ -16,32 +17,24 @@ const Home = () => {
   });
   
   useEffect(()=>{
-    if(types === "google" || types==="facebook"){
-      document.cookie=`displayName=` + encodeURIComponent(displayName) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-      document.cookie=`photoURL=` + encodeURIComponent(photoURL) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-      document.cookie=`email=` + encodeURIComponent(email) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-      document.cookie=`uid=` + encodeURIComponent(uid) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-    }else{
-      document.cookie=`displayName=` + encodeURIComponent(displayName) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-      document.cookie=`email=` + encodeURIComponent(email) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-      document.cookie=`uid=` + encodeURIComponent(uid) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
-    }
-      
+      document.cookie=`displayName=${displayName}`
+      document.cookie=`photoURL=${photoURL}`;
+      document.cookie=`email=${email}`
+      document.cookie=`uid=${uid}`
+      let lasCookies = document.cookie;
+      const aux = lasCookies.split([";"])
+      setImg(aux[1].split(["="]))
+      setName(aux[0].split(["="]))
+      reset();
   },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValue);
   } 
-
-  const handleAqui = () => {  
-    alert(document.cookie)
-  }
 
   return (
     <div className='container flex flex-col items-center h-screen'>
-    <NavBarIcon loquequiera={true}  />
-    <button onClick={handleAqui}>Aqui</button>
+    <NavBarIcon loquequiera={true} />
     <div className='w-screen justify-center items-center flex mt-10 gap-5 mx-auto px-10'>
       {/* Formulario */}
         <div className='w-1/2 mx-auto border-2 border-primary flex justify-center items-center' >

@@ -3,7 +3,8 @@ import React from 'react'
 import InfoNavBar from './InfoNavBar'
 
 const NavBarIcon = ({loquequiera}) => {
-
+  
+  
   return (
     <div className='w-screen bg-primary h-32 flex justify-between items-center mx-auto'>
       <div className='md:flex md:justify-center md:items-center hover:opacity-70 transition-all duration-500 w-1/2'>

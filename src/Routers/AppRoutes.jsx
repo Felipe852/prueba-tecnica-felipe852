@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ContextProvider } from "../context/ContextProvider";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -26,23 +27,25 @@ function AppRoutes(){
 
     return(
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={
-                    <PublicRouter isAutentication={auth}>
-                        <Login />
-                    </PublicRouter>} 
-                />
-                <Route path="/register" element={
-                    <PublicRouter isAutentication={auth}>
-                        <Register />
-                    </PublicRouter>} 
-                />
-                <Route path="/home" element={
-                    <PrivateRouter isAutentication={auth}>
-                        <Home />
-                    </PrivateRouter>} 
-                />
-            </Routes>
+            <ContextProvider>
+                <Routes>
+                    <Route path="/" element={
+                        <PublicRouter isAutentication={auth}>
+                            <Login />
+                        </PublicRouter>} 
+                    />
+                    <Route path="/register" element={
+                        <PublicRouter isAutentication={auth}>
+                            <Register />
+                        </PublicRouter>} 
+                    />
+                    <Route path="/home" element={
+                        <PrivateRouter isAutentication={auth}>
+                            <Home />
+                        </PrivateRouter>} 
+                    />
+                </Routes>
+            </ContextProvider> 
         </BrowserRouter>
     )
 }
