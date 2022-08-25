@@ -18,15 +18,18 @@ const Login = () => {
     e.preventDefault();
     console.log(formValue);
     dispatch(LoginWithEmail(formValue.email, formValue.password));
+    localStorage.setItem("type","email")
     reset();
   };
 
   const handleGoogle = () => {
     dispatch(loginGoogle());
+    localStorage.setItem("type","google")
   };
 
   const handleFacebook = () => {
     dispatch(loginFacebook());
+    localStorage.setItem("type","facebook")
   };
 
   return (

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from '../components/Button';
 import NavBarIcon from '../components/NavBarIcon'
 import { useForm } from '../Hooks/useForm';
-import { BiSearch } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const types = localStorage.getItem("type")
+  const { photoURL, displayName, email , uid } = useSelector((state) => state.login);
   const { formValue, handleInputChangeName, reset } = useForm({
     name: "",
     lastName: "",
@@ -12,15 +14,34 @@ const Home = () => {
     birth:"",
     email:""
   });
+  
+  useEffect(()=>{
+    if(types === "google" || types==="facebook"){
+      document.cookie=`displayName=` + encodeURIComponent(displayName) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+      document.cookie=`photoURL=` + encodeURIComponent(photoURL) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+      document.cookie=`email=` + encodeURIComponent(email) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+      document.cookie=`uid=` + encodeURIComponent(uid) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+    }else{
+      document.cookie=`displayName=` + encodeURIComponent(displayName) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+      document.cookie=`email=` + encodeURIComponent(email) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+      document.cookie=`uid=` + encodeURIComponent(uid) + "; expires= Wed, 24 Aug 2022 22:53:30 UTC"
+    }
+      
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formValue);
   } 
 
+  const handleAqui = () => {  
+    alert(document.cookie)
+  }
+
   return (
     <div className='container flex flex-col items-center h-screen'>
     <NavBarIcon loquequiera={true}  />
+    <button onClick={handleAqui}>Aqui</button>
     <div className='w-screen justify-center items-center flex mt-10 gap-5 mx-auto px-10'>
       {/* Formulario */}
         <div className='w-1/2 mx-auto border-2 border-primary flex justify-center items-center' >
