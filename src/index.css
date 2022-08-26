@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.filtereamesta{
+    filter: invert(99%) sepia(3%) saturate(108%) hue-rotate(200deg) brightness(122%) contrast(100%);
+}
