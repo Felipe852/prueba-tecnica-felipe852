@@ -83,7 +83,8 @@ export const registerWithEmail = (email, password, name, phoneNumber) => {
         .then(({
             user: {
               displayName,
-              email
+              email,
+              uid
             }
           }) =>
           dispatch(
@@ -91,6 +92,7 @@ export const registerWithEmail = (email, password, name, phoneNumber) => {
               displayName,
               email,
               password,
+              uid
             })
           )
         )

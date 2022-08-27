@@ -1,9 +1,11 @@
 import { getAuth } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from "react-redux";
+import {  useNavigate } from 'react-router-dom'
 
 const InfoNavBar = () => {
   const auth = getAuth();
+  const navigate = useNavigate()
   const { photoURL, displayName} = useSelector((state) => state.login);
   const [img, setImg] = useState()
 
@@ -25,7 +27,7 @@ const InfoNavBar = () => {
         <div className='h-28 opacity-20 w-px bg-black'></div>
         <div className=' h-full flex gap-5 justify-center items-center px-5'>
             <p className='cursor-default text-sm md:text-lg'>{displayName}</p>
-            <img className='md:w-20 md:h-20 w-12 h-12 rounded-full cursor-pointer' src={img} />
+            <img onClick={()=>navigate("/home/EditAccount")} className='md:w-20 md:h-20 w-12 h-12 rounded-full cursor-pointer' src={img} />
         </div>
     </div>
   )

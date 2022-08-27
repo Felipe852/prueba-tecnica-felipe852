@@ -29,17 +29,17 @@ function AppRoutes(){
         <BrowserRouter>
             <ContextProvider>
                 <Routes>
-                    <Route path="/" element={
+                    <Route exact path="/" element={
                         <PublicRouter isAutentication={auth}>
                             <Login />
                         </PublicRouter>} 
                     />
-                    <Route path="/register" element={
+                    <Route exact path="/register" element={
                         <PublicRouter isAutentication={auth}>
                             <Register />
                         </PublicRouter>} 
                     />
-                    <Route path="/home" element={
+                    <Route exact path="/home" element={
                         <PrivateRouter isAutentication={auth}>
                             <Home />
                         </PrivateRouter>} 
