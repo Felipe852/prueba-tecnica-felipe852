@@ -66,7 +66,7 @@ const Home = () => {
           'Guardado'
         )
         const {name,cc,email} = info
-        const giturl = `${users}${formValue.githubname}`
+        const giturl = `github.com/${formValue.githubname}`
         if(idGit){
           const dataGuardada = {
           name:name,
