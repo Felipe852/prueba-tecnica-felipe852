@@ -17,6 +17,7 @@ const Home = () => {
   const [info, setInfo] = useState()
   const [data, setData] = useState()
   const [idGit, setIdGit] = useState()
+  const [actualizarData, setActualizarData] = useState()
   const { formValue, handleInputChangeName, reset } = useForm({
     name: "",
     lastName: "",
@@ -79,6 +80,7 @@ const Home = () => {
         await updateDoc(actualizar, {
           uid: ids.id
         });
+        setActualizarData(ids.id)
         }
         
       }
@@ -162,7 +164,7 @@ const Home = () => {
             <Button text={"Acept"}/>
         </div>
         {/* Contratados */}
-          <TableContratados  />
+          <TableContratados contador={actualizarData}  />
       </div>
       <footer className='h-36 w-full'><br /></footer>
     </div>

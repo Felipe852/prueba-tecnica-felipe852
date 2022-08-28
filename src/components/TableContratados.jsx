@@ -3,12 +3,13 @@ import { collection, getDocs, deleteDoc, doc, query, where } from "firebase/fire
 import { db } from '../Firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 
-const TableContratados = () => {
+const TableContratados = ({contador}) => {
     const [data, setData] = useState([])
+    const [render, setRender] = useState(contador)
 
     useEffect(() => {
         traerdatos();
-    }, [])
+    }, [render,contador])
     
 
     const traerdatos = async() => {
@@ -36,7 +37,8 @@ const TableContratados = () => {
                 'Your file has been deleted.',
                 'success'
               )
-              /* await deleteDoc(doc(db, "accepted", e.id)); */
+              await deleteDoc(doc(db, "accepted", e.id));
+              setRender(e.id)
             }
           })
     }
