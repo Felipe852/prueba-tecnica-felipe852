@@ -86,7 +86,6 @@ const Home = () => {
       }
     })
   }
-
   return (
     <div className='container flex flex-col items-center h-screen'>
     <NavBarIcon loquequiera={true} />
